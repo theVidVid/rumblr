@@ -11,11 +11,12 @@ get '/index' do
 end
 
 get '/signup' do
-    erb :sign_up
+    erb :signup
 end
 
 get '/login' do
-    erb :log_in
+    erb :login
+    redirect '/profile'
 end
 
 get '/profile' do
