@@ -23,6 +23,11 @@ get '/profile' do
     erb :profile
 end
 
+get '/createBlog' do
+    @user = User.find(session[:id])
+    erb :createBlog
+end
+
 get '/logout' do
     session.clear
     redirect '/login'
@@ -45,6 +50,12 @@ post '/user/new' do
     #Setting the session with key of ID to be equal to the users id
     #Essentialy this "Logs them in"
     session[:id] = @newuser.id
+    redirect '/profile'
+end
+
+post '/post/new' do
+    #Creating a new post based on the values from the form
+    @newpost = Post.create(title: params[:title], content: params[:content], user_id: session[:id])
     redirect '/profile'
 end
 
