@@ -28,6 +28,11 @@ get '/createBlog' do
     erb :createBlog
 end
 
+get '/blogs' do
+    @user = User.find(session[:id])
+    erb :blogs
+end
+
 get '/logout' do
     session.clear
     redirect '/login'
