@@ -23,16 +23,16 @@ get '/profile' do
     erb :profile
 end
 
-# get 'user/logout' do
-#     session.clear
-#     redirect '/login'
-# end
+get '/logout' do
+    session.clear
+    redirect '/login'
+end
 
 post '/user/login' do 
     @user = User.find_by(email: params[:email], password: params[:password])
     if @user != nil
         session[:id] = @user.id
-        erb :profile
+        redirect '/profile'
     else   
         #Could not find this user. Redirecting them to the signup page
         redirect '/signup'
