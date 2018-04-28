@@ -9,7 +9,7 @@
     <title>theDrumZoo</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
         <a class="navbar-brand" href="#">
             <img src="theDrumZoo.png" class=".img-fluid" alt="logo">
         </a>
@@ -19,8 +19,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/index">Home</a>
-                <a class="nav-item nav-link" href="/#{:signup}">Contact</a>
+                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link" href="#">Contact</a>
             </div>
         </div>
     </nav>
@@ -29,27 +29,27 @@
                 <img src="drummer_four.jpeg" class="img-fluid" alt="sign-up photo">
             </div>
             <div class="row">            
-                <form>
+                <form method="POST" action="/user/new">
                     <h4 class="mt-4">New User Info</h4>
                     <div class="form-group col-12">
                         <label for="first_name">First Name:</label>
-                        <input type="text" class="form-control" id="firstname">
+                        <input type="text" name="first_name" class="form-control" id="firstname">
                     </div>
                     <div class="form-group col-12">
                         <label for="last_name">Last Name:</label>
-                        <input type="text" class="form-control" id="lastname">
+                        <input type="text" name="last_name" class="form-control" id="lastname">
                     </div>
                     <div class="form-group col-12">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" name="email" class="form-control" id="email">
                     </div>
                     <div class="form-group col-12">
-                        <label for="birthdate">Birthdate</label>
-                        <input type="date" class="form-control" id="birthdate">
+                        <label for="birthday">Birthdate</label>
+                        <input type="date" name="birthday" class="form-control" id="birthdate">
                     </div>                
                     <div class="form-group col-12">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" name="password" class="form-control" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Get Started</button>
                 </form>

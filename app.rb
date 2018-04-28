@@ -6,7 +6,7 @@ require_relative './models/Post'
 set :database, {adapter: 'postgresql', database: 'rumblr'}
 enable :sessions
 
-get '/index' do
+get '/' do
     erb :index
 end
 
@@ -23,10 +23,10 @@ get '/profile' do
     erb :profile
 end
 
-get '/logout' do
-    session.clear
-    redirect '/login'
-end
+# get 'user/logout' do
+#     session.clear
+#     redirect '/login'
+# end
 
 post '/user/login' do 
     @user = User.find_by(email: params[:email], password: params[:password])
@@ -39,20 +39,14 @@ post '/user/login' do
     end 
 end
 
-action="/user/login"
-
-post '/user/post' do 
-    @post = Post.find_by(title: params[:title], content: params[:content])
-    if @post != nil
-        session[:id] = @post.id
-        erb :profile
-    else   
-        #Could not find this user. Redirecting them to the signup page
-        redirect '/profile'
-    end 
+post '/user/new' do 
+    #Creating a new user based on the values from the form
+    @newuser = User.create(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
+    #Setting the session with key of ID to be equal to the users id
+    #Essentialy this "Logs them in"
+    session[:id] = @newuser.id
+    redirect '/profile'
 end
-
-action="/user/post"
 
 private 
 #Potentially useful function instead of checking if the user exists

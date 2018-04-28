@@ -9,7 +9,7 @@
     <title>theDrumZoo</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
         <a class="navbar-brand" href="#">
             <img src="theDrumZoo.png" class=".img-fluid" alt="logo">
         </a>
@@ -18,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/index">Home</a>
+                <a class="nav-item nav-link" href="/">Home</a>
                 <a class="nav-item nav-link" href="#">Contact</a>
             </div>
         </div>
@@ -28,15 +28,15 @@
                 <img src="drum_set.jpeg" class="img-fluid" alt="sign-up photo">
             </div>
             <div class="row">            
-                <form method="POST" action="/user/login">
+                <form method="POST" action="/profile">
                     <h4 class="mt-4">Log-In</h4>
                     <div class="form-group col-12">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" name="email" class="form-control" id="email">
                     </div>               
                     <div class="form-group col-12">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" name="password" class="form-control" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Log-In</button>
                 </form>
