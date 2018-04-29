@@ -26,20 +26,36 @@
                 </div>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search Users" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
                 </form>                
             </nav>
             <div class="container col-12">
                 <div class="row">
                     <div class="jumbotron col-md-5">
-                        <h1 class="display-4">Welcome to theDrumZoo blogosphere!</h1>
+                        <h1 class="display-4"><%=@user.first_name%> <%=@user.last_name%>'s Blog posts.</h1>
                         <p class="lead">A space to blog about everything Drums.</p>
                             <hr class="my-4">
-                        <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign-up</a>
-                        <a class="btn btn-secondary btn-lg" href="/login" role="button">Log-in</a>
+                        <a class="btn btn-primary btn-lg" href="/profile" role="button">Profile</a>                                                                                                                               
+                        <a class="btn btn-secondary btn-lg" href="/logout" role="button">Log-out</a>                        
                     </div>
                     <div class="responsive-image col-md-7">
                         <img src="drum_set3.jpeg" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <h3>Blog Posts</h3>
+                    <div class="row">
+                        <% @posts.each do |post| %>
+                            <div class="card-header" style="width: 36rem;">
+                                <div class="card-body">
+                                    <h4 class="card-header"><%= post.title %></h4>
+                                    <hr class="my-4">
+                                    <p><%= post.content %></p>
+                                    <hr class="my-4">
+                                </div>
+                                <a class="btn btn-outline-warning btn-sm" href="/edit" role="button">Edit</a>
+                                <a class="btn btn-outline-danger btn-sm" href="/delete" role="button">Delete</a> 
+                            </div>
+                        <% end %>
+
                     </div>
                 </div>
             </div>
@@ -49,4 +65,5 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <script src="/js/main.js"></script>   
     </body>
-</html>
+</html>                
+                

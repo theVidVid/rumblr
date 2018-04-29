@@ -30,6 +30,7 @@ end
 
 get '/blogs' do
     @user = User.find(session[:id])
+    @posts = Post.where(user_id: session[:id])
     erb :blogs
 end
 
