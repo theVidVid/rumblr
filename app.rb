@@ -4,7 +4,7 @@ require "sinatra/activerecord"
 require_relative './models/User'
 require_relative './models/Post'
 
-set :database, {adapter: 'postgresql', database: 'rumblr'}
+# set :database, {adapter: 'postgresql', database: 'rumblr'}
 enable :sessions
 
 get '/' do
