@@ -8,6 +8,7 @@ set :database, {adapter: 'postgresql', database: 'rumblr'}
 enable :sessions
 
 get '/' do
+    @posts = Post.all
     erb :index
 end
 
@@ -35,24 +36,28 @@ get '/blogs' do
     erb :blogs
 end
 
+#finds user's current blog, redirects to editBlog page
 get '/posts/:post_id/edit' do
     @user = User.find(session[:id])      #finding user current logged in
     @post = Post.find(params[:post_id])  #finding post currently being edited
     erb :editBlog
 end
 
+#edits user's blog, redirects back to user's blog page
 put '/posts/:post_id/edit' do
     @user = User.find(session[:id]) 
-    @editpost = Post.update(user_id: session[:id], title: params[:title], content: params[:content])
+    @editpost = Post.update(params[:post_id], title: params[:title], content: params[:content])
     redirect '/blogs'
 end
 
+#deletes user's blog post
 delete '/posts/:post_id' do
     @user = User.find(session[:id])
     Post.destroy(params[:post_id])
     redirect '/blogs'
 end
 
+#deletes user's account
 delete '/user/:user_id/delete' do
     @posts = Post.where(user_id: session[:id]).destroy_all
     @user = User.where(user_id: session[:id]).destroy_all

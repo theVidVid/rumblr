@@ -19,9 +19,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/">Home</a>
-                    <a class="nav-item nav-link" href="#about">About</a>
-                    <a class="nav-item nav-link" href="#contact">Contact</a>                
+                    <button type="submit" class="btn btn-primary">Home</button>               
                     </div>
                 </div>
             </nav>
@@ -37,23 +35,22 @@
                         <a class="btn btn-secondary btn-lg" href="/logout" role="button">Log-out</a>
                     </div>
                     <div class="responsive-image col-md-7">
-                        <img src="drum_set3.jpeg" class="img-fluid" alt="Responsive image">
+                        <img src="drummer_six.jpeg" class="img-fluid" alt="Responsive image">
+                    </div>
+                        <form method="post" action="/posts/<%=@post.id%>/edit">
+                            <input type="hidden" name="_method" value="put">
+                                <h3 class="mt-4">Edit Blog</h3>
+                                <div class="form-group col-12">
+                                    <label for="title">Title:</label>
+                                    <input type="input" name="title" class="form-control" id="title" value="<%= @post.title %>">
+                                    <label for="content">New content:</label>
+                                <textarea type="input" name="content" class="form-control" id="content" rows="3" value= "<%= @post.content %>" ><%= @post.content %></textarea>  
+                            </div>               
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
-                    <form method="post" action="/posts/:post_id/edit">
-                    <input type="hidden" name="_method" value="put">
-                        <h3 class="mt-4">Edit Blog</h3>
-                        <div class="form-group col-12">
-                            <label for="title">Title:</label>
-                            <input type="input" name="title" class="form-control" id="title" value="<%= @post.title %>">
-                        
-                            <label for="content">New content:</label>
-                            <textarea type="input" name="content" class="form-control" id="content" rows="3" value= "<%= @post.content %>" ><%= @post.content %></textarea>  
-                        </div>               
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>                 
             </div>
-        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
