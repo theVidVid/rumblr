@@ -1,6 +1,7 @@
 require "pry"
 require "sinatra"
 require "sinatra/activerecord"
+require "heroku"
 require_relative './models/User'
 require_relative './models/Post'
 
