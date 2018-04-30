@@ -1,3 +1,4 @@
+require "pry"
 require "sinatra"
 require "sinatra/activerecord"
 require_relative './models/User'
@@ -32,6 +33,31 @@ get '/blogs' do
     @user = User.find(session[:id])
     @posts = Post.where(user_id: session[:id])
     erb :blogs
+end
+
+get '/posts/:post_id/edit' do
+    @user = User.find(session[:id])      #finding user current logged in
+    @post = Post.find(params[:post_id])  #finding post currently being edited
+    erb :editBlog
+end
+
+put '/posts/:post_id/edit' do
+    @user = User.find(session[:id]) 
+    @editpost = Post.update(user_id: session[:id], title: params[:title], content: params[:content])
+    redirect '/blogs'
+end
+
+delete '/posts/:post_id' do
+    @user = User.find(session[:id])
+    Post.destroy(params[:post_id])
+    redirect '/blogs'
+end
+
+delete '/user/:user_id/delete' do
+    @posts = Post.where(user_id: session[:id]).destroy_all
+    @user = User.where(user_id: session[:id]).destroy_all
+    session.clear
+    redirect '/index'
 end
 
 get '/logout' do

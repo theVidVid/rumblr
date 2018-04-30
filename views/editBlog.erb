@@ -40,13 +40,15 @@
                         <img src="drum_set3.jpeg" class="img-fluid" alt="Responsive image">
                     </div>
                 </div>
-                    <form method="POST" action="/post/new">
-                        <h4 class="mt-4">New Blog Post</h4>
+                    <form method="post" action="/posts/:post_id/edit">
+                    <input type="hidden" name="_method" value="put">
+                        <h3 class="mt-4">Edit Blog</h3>
                         <div class="form-group col-12">
                             <label for="title">Title:</label>
-                            <input type="input" name="title" class="form-control" id="title">
+                            <input type="input" name="title" class="form-control" id="title" value="<%= @post.title %>">
+                        
                             <label for="content">New content:</label>
-                            <textarea type="input" name="content" class="form-control" id="content" rows="3"></textarea>  
+                            <textarea type="input" name="content" class="form-control" id="content" rows="3" value= "<%= @post.content %>" ><%= @post.content %></textarea>  
                         </div>               
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>                 

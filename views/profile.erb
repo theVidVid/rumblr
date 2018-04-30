@@ -44,6 +44,9 @@
                         <h5>Last Name: <%=@user.last_name%></h5>
                         <h5>Birthday: <%=@user.birthday%></h5>
                         <h5>Email Address: <%=@user.email%></h5>
+                            <hr class="my-4">
+                        <a class="btn btn-danger btn-lg" href='/user/:user_id/delete' name='delete' role="button">Delete Account</a>
+                        
                     </div>
                     <div class="responsive-image col-md-7">
                         <img src="drum_set3.jpeg" class="img-fluid" alt="Responsive image">
