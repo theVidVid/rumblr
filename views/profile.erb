@@ -19,15 +19,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/">Home</a>
-                    <a class="nav-item nav-link" href="#about">About</a>
-                    <a class="nav-item nav-link" href="#contact">Contact</a>                
+                                   
                     </div>
-                </div>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search Users" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>                
+                </div>               
             </nav>
             <div class="container col-12">
                 <div class="row">
@@ -35,6 +29,7 @@
                         <h1 class="display-4">Welcome to theDrumZoo, <%=@user.first_name%> <%=@user.last_name%>!</h1>
                         <p class="lead">A space to blog about everything Drums. Let's talk drums!</p>
                             <hr class="my-4">
+                        <a class="btn btn-secondary btn-lg" href="/">Home</a>
                         <a class="btn btn-primary btn-lg" href="/createBlog" role="button">Create New Blog</a>
                         <a class="btn btn-primary btn-lg" href="/blogs" name="blogs" role="button">View Blogs</a>
                         <a class="btn btn-secondary btn-lg" href="/logout" role="button">Log-out</a>
@@ -45,8 +40,10 @@
                         <h5>Birthday: <%=@user.birthday%></h5>
                         <h5>Email Address: <%=@user.email%></h5>
                             <hr class="my-4">
-                        <a class="btn btn-danger btn-lg" href='/user/:user_id/delete' name='delete' role="button">Delete Account</a>
-                        
+                        <form action="/user/:user_id/delete" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+                        </form>
                     </div>
                     <div class="responsive-image col-md-7">
                         <img src="drum_set4.jpeg" class="img-fluid" alt="Responsive image">

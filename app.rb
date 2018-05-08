@@ -4,6 +4,7 @@ require "sinatra/activerecord"
 require_relative './models/User'
 require_relative './models/Post'
 
+# make sure to comment this line out and updating changes to github before deploying to Heroku
 # set :database, {adapter: 'postgresql', database: 'rumblr'}
 enable :sessions
 
@@ -58,11 +59,18 @@ delete '/posts/:post_id' do
 end
 
 #deletes user's account
+# delete '/user/:user_id/delete' do
+#     @posts = Post.where(user_id: session[:id]).destroy_all
+#     @user = User.where(user_id: session[:id]).destroy_all
+#     session.clear
+#     redirect '/index'
+# end
+
 delete '/user/:user_id/delete' do
-    @posts = Post.where(user_id: session[:id]).destroy_all
-    @user = User.where(user_id: session[:id]).destroy_all
+	@user = session[:id]
+    User.destroy(@user)
     session.clear
-    redirect '/index'
+    redirect '/'
 end
 
 get '/logout' do

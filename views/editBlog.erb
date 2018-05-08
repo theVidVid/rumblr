@@ -37,7 +37,7 @@
                     <div class="responsive-image col-md-7">
                         <img src="drummer_six.jpeg" class="img-fluid" alt="Responsive image">
                     </div>
-                        <form method="post" action="/posts/<%=@post.id%>/edit">
+                        <form method="post" action="/posts/<%= @post.id %>/edit">
                             <input type="hidden" name="_method" value="put">
                                 <h3 class="mt-4">Edit Blog</h3>
                                 <div class="form-group col-12">
