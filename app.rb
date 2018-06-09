@@ -58,14 +58,7 @@ delete '/posts/:post_id' do
     redirect '/blogs'
 end
 
-#deletes user's account
-# delete '/user/:user_id/delete' do
-#     @posts = Post.where(user_id: session[:id]).destroy_all
-#     @user = User.where(user_id: session[:id]).destroy_all
-#     session.clear
-#     redirect '/index'
-# end
-
+#deletes user's account, redirects back to index page
 delete '/user/:user_id/delete' do
 	@user = session[:id]
     User.destroy(@user)
@@ -73,6 +66,7 @@ delete '/user/:user_id/delete' do
     redirect '/'
 end
 
+#logs out a user, clears session, and redirects to login page
 get '/logout' do
     session.clear
     redirect '/login'
